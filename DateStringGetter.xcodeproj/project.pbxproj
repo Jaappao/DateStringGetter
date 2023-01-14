@@ -13,6 +13,8 @@
 		FD74DF952971672A008E23CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD74DF932971672A008E23CD /* Main.storyboard */; };
 		FD74DF972971672B008E23CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD74DF962971672B008E23CD /* Assets.xcassets */; };
 		FD74DF9A2971672B008E23CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD74DF982971672B008E23CD /* LaunchScreen.storyboard */; };
+		FD74DFA32971A00E008E23CD /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD74DFA12971A00E008E23CD /* CollectionViewCell.swift */; };
+		FD74DFA42971A00E008E23CD /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD74DFA22971A00E008E23CD /* CollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		FD74DF962971672B008E23CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FD74DF992971672B008E23CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FD74DF9B2971672B008E23CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FD74DFA12971A00E008E23CD /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		FD74DFA22971A00E008E23CD /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 		FD74DF8C2971672A008E23CD /* DateStringGetter */ = {
 			isa = PBXGroup;
 			children = (
+				FD74DFA12971A00E008E23CD /* CollectionViewCell.swift */,
+				FD74DFA22971A00E008E23CD /* CollectionViewCell.xib */,
 				FD74DF8D2971672A008E23CD /* AppDelegate.swift */,
 				FD74DF8F2971672A008E23CD /* SceneDelegate.swift */,
 				FD74DF912971672A008E23CD /* ViewController.swift */,
@@ -127,6 +133,7 @@
 			files = (
 				FD74DF9A2971672B008E23CD /* LaunchScreen.storyboard in Resources */,
 				FD74DF972971672B008E23CD /* Assets.xcassets in Resources */,
+				FD74DFA42971A00E008E23CD /* CollectionViewCell.xib in Resources */,
 				FD74DF952971672A008E23CD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -140,6 +147,7 @@
 			files = (
 				FD74DF922971672A008E23CD /* ViewController.swift in Sources */,
 				FD74DF8E2971672A008E23CD /* AppDelegate.swift in Sources */,
+				FD74DFA32971A00E008E23CD /* CollectionViewCell.swift in Sources */,
 				FD74DF902971672A008E23CD /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
