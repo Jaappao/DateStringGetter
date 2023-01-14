@@ -18,6 +18,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var interval: Int = 30
     var dates: Int = 7
     
+    var dateBegin: Date = Date()
+    
     let howManyColumnsWithinBody: Int = 3
     
     override func viewDidLoad() {
@@ -41,6 +43,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         timeEnd = 18
         interval = 30
         dates = 7
+        
+        dateBegin = Date()
     }
     
     func getTimeDurationOfDay() -> Int {
@@ -160,8 +164,133 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         bodyCollectionView.indexPathsForSelectedItems?.forEach({ IndexPath in
             indexArray.append(IndexPath.row)
         })
-        indexArray.sort()
-        textView.text = "\(indexArray)"
+        let dateString = dateStringBuilder(indexArray)
+        textView.text = "\(dateString)"
+    }
+    
+    
+    // 表示させる文字列を生成する処理
+    func convertIndexPathsArrayToDateSeparated2DArray(_ selectedItems: [Int]) -> [[Int]] {
+        // Ex)
+        //   global:
+        //     timeBegin = 10
+        //     timeEnd = 18
+        //     interval = 30
+        //     dates = 7
+        //     getRowNum()...17
+        //   input: [24, 25, 42, 46, 47, 48, 49]
+        //   Output: [[], [6, 7], [7, 11, 12, 13, 14], [], [], [], []]
+        
+        
+        // 返り値初期化
+        // 要素値は 「 interval分 をブロックとして、**その日の開始時刻から**何ブロック目か」 を示す headerも無視するために-1している
+        // ExのOutput例における6という値は 10:00 から interval * 6 = 180 分後 のblockがselectedだったことを示す
+        var dateSeparatedSelectedItems : [[Int]] = []
+        for _ in 0 ..< dates {
+            dateSeparatedSelectedItems.append([]) // dataSeparetedSelectedItemsを初期化
+        }
+        
+        // 日別に分類する
+        selectedItems.forEach { itemIdx in
+            dateSeparatedSelectedItems[itemIdx / getRowNum()].append(itemIdx % getRowNum() - 1)
+        }
+        
+        // ソートする
+        for i in 0 ..< dates {
+            dateSeparatedSelectedItems[i].sort()
+        }
+        
+        return dateSeparatedSelectedItems
+    }
+    
+    func printTimeOfBlock(_ blockVal: Int, offset: Int = 0) -> String {
+        let offsetHours = (blockVal * interval + offset) / 60
+        let offsetMinutes = (blockVal * interval + offset) % 60
+        let beginTime = "\(timeBegin + offsetHours):\(String(format: "%02d", offsetMinutes))"
+        return beginTime
+    }
+    
+    func printBeginTimeOfBlock(_ blockVal: Int) -> String {
+        return printTimeOfBlock(blockVal)
+    }
+    
+    func printEndTimeOfBlock(_ blockVal: Int) -> String {
+        return printTimeOfBlock(blockVal, offset: interval)
+    }
+    
+    func printFrom2ToTime(fromBlockVal: Int, toBlockVal: Int) -> String {
+        let fromStr = printBeginTimeOfBlock(fromBlockVal)
+        let toStr = printEndTimeOfBlock(toBlockVal)
+        return "\(fromStr)~\(toStr)"
+    }
+    
+    func printDate(_ offset: Int = 0) -> String {
+        let dateFormatter = DateFormatter()
+        
+        // フォーマット設定
+//        dateFormatter.dateFormat = "yyyy'年'M'月'd'日('EEEEE') 'H'時'm'分's'秒'" // 曜日1文字
+        dateFormatter.dateFormat = "M'月'd'日('EEE')'" // 曜日3文字
+
+        // ロケール設定（日本語・日本国固定）
+        dateFormatter.locale = Locale(identifier: "ja_JP")
+
+        // タイムゾーン設定（日本標準時固定）
+        dateFormatter.timeZone = TimeZone(identifier: "Asia/Tokyo")
+
+        // 変換
+        let targetDate = Calendar.current.date(byAdding: .day, value: offset, to: dateBegin)!
+        let str = dateFormatter.string(from: targetDate)
+        
+        return str
+    }
+    
+    // 表示文字列を組み立てるコード
+    func dateStringBuilder(_ selectedItems: [Int]) -> String {
+        let dateSeparatedSelectedItems = convertIndexPathsArrayToDateSeparated2DArray(selectedItems)
+        print(dateSeparatedSelectedItems)
+        
+        var retVal: String = ""
+        
+        for idx_date in 0..<dateSeparatedSelectedItems.count {
+            if dateSeparatedSelectedItems[idx_date].count != 0 {
+                
+                retVal += "\(printDate(idx_date)) "
+                var fromBlockVal = -1
+                for idx_block in 0..<dateSeparatedSelectedItems[idx_date].count {
+                    if fromBlockVal == -1 {
+                        fromBlockVal = dateSeparatedSelectedItems[idx_date][idx_block]  //
+                    }
+                    
+                    let toBlockVal = dateSeparatedSelectedItems[idx_date][idx_block]
+                    
+                    // 右側を見て、連続値だったらcontinue, 連続値じゃなかったらそこまでの経過を文字列化
+                    if idx_block == dateSeparatedSelectedItems[idx_date].count - 1 {
+                        // 右を見る前に、終端の時かどうかチェック
+                        // proceed concat
+                        let timeString = printFrom2ToTime(fromBlockVal: fromBlockVal, toBlockVal: toBlockVal)
+                        print("proceed \(idx_date):\(fromBlockVal)-\(toBlockVal) \(timeString)")
+                        retVal += "\(timeString)"
+                        fromBlockVal = -1
+                    } else {
+                        if toBlockVal + 1 ==  dateSeparatedSelectedItems[idx_date][idx_block + 1] {
+                            // 右にある値が連続値の場合
+                            continue
+                        } else {
+                            // 右にある値が連続値じゃない場合
+                            // proceed concat
+                            let timeString = printFrom2ToTime(fromBlockVal: fromBlockVal, toBlockVal: toBlockVal)
+                            print("proceed \(idx_date):\(fromBlockVal)-\(toBlockVal) \(timeString)")
+                            retVal += "\(timeString), "
+                            fromBlockVal = -1
+                        }
+                            
+                    }
+                    
+                }
+            }
+            retVal += "\n"
+        }
+        return retVal
     }
 
 }
