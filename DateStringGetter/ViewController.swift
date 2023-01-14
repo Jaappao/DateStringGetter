@@ -30,7 +30,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     var dateBegin: Date = Date()
     
-    let howManyColumnsWithinBody: Int = 3
+    let howManyColumnsWithinBody: CGFloat = CGFloat(3.5)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -246,7 +246,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             let horizontalSpace:CGFloat = 5
 
             // デバイスの横幅をn分割した横幅　- セル間のスペース*2（セル間のスペースが二つあるため）
-            let cellWidth : CGFloat = collectionViewWidth / CGFloat(howManyColumnsWithinBody) - horizontalSpace*2
+            let cellWidth : CGFloat = collectionViewWidth / howManyColumnsWithinBody - horizontalSpace*2
             let cellHeight: CGFloat = getCellHeight(collectionViewHeight) - horizontalSpace*2
 
             return CGSize(width: cellWidth, height: cellHeight)
