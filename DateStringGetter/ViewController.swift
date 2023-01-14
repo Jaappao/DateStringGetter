@@ -17,6 +17,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     @IBOutlet weak var intervalMenuButton: UIButton!
     
+    @IBOutlet weak var timeBeginMenuButton: UIButton!
+    @IBOutlet weak var timeEndMenuButton: UIButton!
+    
     @IBOutlet weak var beginDatePicker: UIDatePicker!
     @IBOutlet weak var endDatePicker: UIDatePicker!
     
@@ -57,6 +60,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         self.configureIntervalMenuButton()
         
+        self.configureTimeBeginButton()
+        self.configureTimeEndButton()
+        
         beginDatePicker.date = Calendar.current.date(byAdding: .day, value: 0, to: dateBegin)!
         endDatePicker.date = Calendar.current.date(byAdding: .day, value: dates, to: dateBegin)!
         
@@ -87,6 +93,45 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         dates = calculatedInterval + 1
         
         self.refreshView()
+    }
+    
+    // 開始時刻と終了時刻を設定
+    func configureTimeBeginButton() {
+        var actions = [UIMenuElement]()
+        
+        for i in 0..<24 {
+            actions.append(UIAction(title: String(i), handler: { _ in
+                if i <= self.timeEnd {
+                    self.timeBegin = i
+                    self.timeBeginMenuButton.setTitle(String(i), for: .normal)
+                    self.timeBeginMenuButton.titleLabel?.font = UIFont.systemFont(ofSize: 10)
+                    self.timeBeginMenuButton.titleLabel?.adjustsFontSizeToFitWidth = true
+                    self.refreshView()
+                }
+            }))
+        }
+        
+        self.timeBeginMenuButton.menu = UIMenu(title: "", options: .displayInline, children: actions)
+        self.timeBeginMenuButton.showsMenuAsPrimaryAction = true
+    }
+    
+    func configureTimeEndButton() {
+        var actions = [UIMenuElement]()
+        
+        for i in 0..<24 {
+            actions.append(UIAction(title: String(i), handler: { _ in
+                if self.timeBegin <= i {
+                    self.timeEnd = i
+                    self.timeEndMenuButton.setTitle(String(i), for: .normal)
+                    self.timeEndMenuButton.titleLabel?.font = UIFont.systemFont(ofSize: 10)
+                    self.timeEndMenuButton.titleLabel?.adjustsFontSizeToFitWidth = true
+                    self.refreshView()
+                }
+            }))
+        }
+        
+        self.timeEndMenuButton.menu = UIMenu(title: "", options: .displayInline, children: actions)
+        self.timeEndMenuButton.showsMenuAsPrimaryAction = true
     }
     
     // Intervalを設定するためのボタンに関する設定

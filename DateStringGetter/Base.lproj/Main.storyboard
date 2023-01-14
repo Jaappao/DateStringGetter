@@ -31,13 +31,12 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="PNY-Ft-OYZ"/>
                                 </connections>
                             </collectionView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hTg-Tp-pKX">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hTg-Tp-pKX">
                                 <rect key="frame" x="10" y="730" width="320" height="80"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="jBi-HX-268"/>
                                 </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -94,16 +93,39 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="clipboard" catalog="system"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v6g-f2-lzU">
+                                <rect key="frame" x="291" y="49.666666666666657" width="39" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="10">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="13"/>
+                                </buttonConfiguration>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6fk-5c-LgD">
+                                <rect key="frame" x="341" y="49.666666666666657" width="39" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="18">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="13"/>
+                                </buttonConfiguration>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="~" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BMR-gI-azw">
+                                <rect key="frame" x="330" y="54" width="11" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="J64-7r-XTi" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="2kv-8i-e95"/>
+                            <constraint firstItem="6fk-5c-LgD" firstAttribute="centerY" secondItem="BMR-gI-azw" secondAttribute="centerY" id="4Dg-OG-Vlc"/>
                             <constraint firstItem="EBC-OW-TvZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="5oH-p7-zLI"/>
                             <constraint firstItem="vNf-TJ-DlG" firstAttribute="centerY" secondItem="bcY-3t-WNI" secondAttribute="centerY" id="7RQ-DR-ypu"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6fk-5c-LgD" secondAttribute="trailing" constant="10" id="BTN-NV-Nwy"/>
                             <constraint firstItem="vNf-TJ-DlG" firstAttribute="leading" secondItem="bcY-3t-WNI" secondAttribute="trailing" constant="10" id="CSQ-GV-0Nr"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6w9-UI-E62" secondAttribute="trailing" constant="10" id="EiK-vT-mWD"/>
                             <constraint firstItem="fwO-PY-Obp" firstAttribute="top" secondItem="J64-7r-XTi" secondAttribute="bottom" constant="10" id="G4j-XC-R0T"/>
+                            <constraint firstItem="6fk-5c-LgD" firstAttribute="centerY" secondItem="vNf-TJ-DlG" secondAttribute="centerY" id="Mmd-fy-ES4"/>
                             <constraint firstItem="6w9-UI-E62" firstAttribute="centerY" secondItem="hTg-Tp-pKX" secondAttribute="centerY" id="NPB-md-5u0"/>
                             <constraint firstItem="EBC-OW-TvZ" firstAttribute="height" secondItem="fwO-PY-Obp" secondAttribute="height" id="QDf-CH-LSS"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="hTg-Tp-pKX" secondAttribute="bottom" id="XcI-N1-L8D"/>
@@ -114,7 +136,10 @@
                             <constraint firstItem="hTg-Tp-pKX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="mBI-sW-Ba1"/>
                             <constraint firstItem="fwO-PY-Obp" firstAttribute="leading" secondItem="EBC-OW-TvZ" secondAttribute="trailing" constant="5" id="rVn-TB-wJP"/>
                             <constraint firstItem="bcY-3t-WNI" firstAttribute="leading" secondItem="J64-7r-XTi" secondAttribute="trailing" constant="10" id="sEH-Yz-Dlf"/>
+                            <constraint firstItem="6fk-5c-LgD" firstAttribute="leading" secondItem="BMR-gI-azw" secondAttribute="trailing" id="vsK-sA-R4N"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fwO-PY-Obp" secondAttribute="trailing" constant="5" id="woC-Oa-kd9"/>
+                            <constraint firstItem="BMR-gI-azw" firstAttribute="leading" secondItem="v6g-f2-lzU" secondAttribute="trailing" id="xBy-9s-M4B"/>
+                            <constraint firstItem="v6g-f2-lzU" firstAttribute="centerY" secondItem="vNf-TJ-DlG" secondAttribute="centerY" id="xeA-iy-Elu"/>
                             <constraint firstItem="bcY-3t-WNI" firstAttribute="centerY" secondItem="J64-7r-XTi" secondAttribute="centerY" id="zWc-8V-gDl"/>
                         </constraints>
                     </view>
@@ -125,6 +150,8 @@
                         <outlet property="intervalMenuButton" destination="vNf-TJ-DlG" id="KKz-FT-ZU1"/>
                         <outlet property="leftCollectionView" destination="EBC-OW-TvZ" id="spJ-vh-rQ3"/>
                         <outlet property="textView" destination="hTg-Tp-pKX" id="toB-W1-bUf"/>
+                        <outlet property="timeBeginMenuButton" destination="v6g-f2-lzU" id="syM-O0-gok"/>
+                        <outlet property="timeEndMenuButton" destination="6fk-5c-LgD" id="OwW-vK-p7Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -140,6 +167,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
