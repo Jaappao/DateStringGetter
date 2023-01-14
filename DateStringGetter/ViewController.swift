@@ -45,6 +45,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         dates = 7
         
         dateBegin = Date()
+        
+        textView.text = ""
     }
     
     func getTimeDurationOfDay() -> Int {
@@ -63,6 +65,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return dates * getRowNum()
     }
     
+    func convertBodyIndexPathRow2BlockInfo(_ bodyIndexPathRow: Int) -> (date: Int, blockVal:Int) {
+        return (bodyIndexPathRow / getRowNum() , bodyIndexPathRow % getRowNum() - 1)
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.bodyCollectionView {
@@ -74,18 +79,25 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row % getRowNum() == 0 {
+            // 一行目
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HeaderCell", for: indexPath) as? CollectionViewHeaderCell
             else {
                 fatalError()
             }
             
-            let label = cell.contentView.viewWithTag(1) as! UILabel
-            label.text = "\(indexPath.row / getRowNum())"
+            if collectionView == self.bodyCollectionView {
+                let label = cell.contentView.viewWithTag(1) as! UILabel
+                label.text = "\(printDate(convertBodyIndexPathRow2BlockInfo(indexPath.row).date, format: "MM/dd EEE", uilabel: label))"
+            } else {
+                let label = cell.contentView.viewWithTag(1) as! UILabel
+                label.text = ""
+            }
             
             return cell
         } else {
-            // body
+            // 二行目以降
             if collectionView == self.bodyCollectionView {
+                // body
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BodyEachCell", for: indexPath) as? bodyCollectionViewCell
                 else {
                     fatalError()
@@ -95,7 +107,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 //セル上のTag(1)とつけたUILabelを生成
                 let label = cell.contentView.viewWithTag(1) as! UILabel
                 
-                let textOfCell = "\(indexPath.row / getRowNum()) \(indexPath.row % getRowNum())"
+                let textOfCell = ""
                 label.text = textOfCell
                 
                 return cell
@@ -108,7 +120,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 //セル上のTag(1)とつけたUILabelを生成
                 let label = cell.contentView.viewWithTag(1) as! UILabel
                 
-                let textOfCell = "\(indexPath.row / getRowNum()) \(indexPath.row % getRowNum())"
+                let blockBeginTime = printBeginTimeOfBlock(convertBodyIndexPathRow2BlockInfo(indexPath.row).blockVal)
+                
+                let textOfCell = "\(blockBeginTime)"
                 label.text = textOfCell
                 
                 return cell
@@ -224,12 +238,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return "\(fromStr)~\(toStr)"
     }
     
-    func printDate(_ offset: Int = 0) -> String {
+    func printDate(_ offset: Int = 0, format: String = "M'月'd'日('EEE')'", uilabel: UILabel? = nil) -> String {
         let dateFormatter = DateFormatter()
         
         // フォーマット設定
 //        dateFormatter.dateFormat = "yyyy'年'M'月'd'日('EEEEE') 'H'時'm'分's'秒'" // 曜日1文字
-        dateFormatter.dateFormat = "M'月'd'日('EEE')'" // 曜日3文字
+        dateFormatter.dateFormat = format // 曜日3文字
 
         // ロケール設定（日本語・日本国固定）
         dateFormatter.locale = Locale(identifier: "ja_JP")
@@ -240,6 +254,20 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         // 変換
         let targetDate = Calendar.current.date(byAdding: .day, value: offset, to: dateBegin)!
         let str = dateFormatter.string(from: targetDate)
+        
+        if uilabel != nil {
+            uilabel?.text = str
+            let weekDay = Calendar.current.component(.weekday, from: targetDate)
+            print(weekDay, str)
+            uilabel?.textColor = UIColor.darkText
+            if weekDay == 7 {
+                // 土曜日
+                uilabel?.textColor = UIColor.systemBlue
+            } else if weekDay == 1 {
+                // 日曜日
+                uilabel?.textColor = UIColor.systemRed
+            }
+        }
         
         return str
     }
@@ -287,8 +315,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     }
                     
                 }
+                retVal += "\n"
             }
-            retVal += "\n"
         }
         return retVal
     }
