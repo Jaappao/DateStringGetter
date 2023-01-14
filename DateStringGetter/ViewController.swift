@@ -432,6 +432,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     @IBAction func copyClipboard() {
         UIPasteboard.general.string = self.textView.text
+        
+        let alert = UIAlertController(title: "Copied!", message: "\(self.textView.text!)", preferredStyle: .alert)
+        self.present(alert, animated: true, completion: nil)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            alert.dismiss(animated: true)
+        }
     }
 
 }
