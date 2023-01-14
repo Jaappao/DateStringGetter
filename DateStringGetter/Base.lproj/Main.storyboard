@@ -92,6 +92,9 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="clipboard" catalog="system"/>
+                                <connections>
+                                    <action selector="copyClipboard" destination="BYZ-38-t0r" eventType="touchUpInside" id="Uhs-nj-YJh"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v6g-f2-lzU">
                                 <rect key="frame" x="291" y="49.666666666666657" width="39" height="30"/>

@@ -427,5 +427,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
         return retVal
     }
+    
+    @IBAction func copyClipboard() {
+        UIPasteboard.general.string = self.textView.text
+    }
 
 }
