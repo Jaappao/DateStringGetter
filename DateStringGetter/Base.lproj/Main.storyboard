@@ -16,39 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v2J-x8-eME">
-                                <rect key="frame" x="10" y="47" width="370" height="50"/>
-                                <subviews>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" toolTip="開始日" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="J64-7r-XTi">
-                                        <rect key="frame" x="0.0" y="0.0" width="120" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="120" id="oQb-wG-OBW"/>
-                                        </constraints>
-                                        <locale key="locale" localeIdentifier="ja"/>
-                                    </datePicker>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="bcY-3t-WNI">
-                                        <rect key="frame" x="120" y="0.0" width="120" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="120" id="rdI-jC-3bJ"/>
-                                        </constraints>
-                                        <locale key="locale" localeIdentifier="ja"/>
-                                    </datePicker>
-                                    <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vNf-TJ-DlG">
-                                        <rect key="frame" x="240" y="0.0" width="130" height="50"/>
-                                        <state key="normal" title="単位時間"/>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="J64-7r-XTi" firstAttribute="top" secondItem="v2J-x8-eME" secondAttribute="top" id="Bix-yL-fbr"/>
-                                    <constraint firstItem="bcY-3t-WNI" firstAttribute="top" secondItem="v2J-x8-eME" secondAttribute="top" id="GGI-C1-UsO"/>
-                                    <constraint firstAttribute="height" constant="50" id="gPT-uE-FPV"/>
-                                    <constraint firstItem="J64-7r-XTi" firstAttribute="centerY" secondItem="v2J-x8-eME" secondAttribute="centerY" id="h2Q-e4-p67"/>
-                                    <constraint firstAttribute="bottom" secondItem="bcY-3t-WNI" secondAttribute="bottom" id="kPZ-sf-kFV"/>
-                                    <constraint firstAttribute="bottom" secondItem="J64-7r-XTi" secondAttribute="bottom" id="pLq-4w-o6v"/>
-                                </constraints>
-                            </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fwO-PY-Obp">
-                                <rect key="frame" x="85" y="107" width="295" height="550"/>
+                                <rect key="frame" x="85" y="92" width="300" height="628"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pDu-zg-kyW">
                                     <size key="itemSize" width="128" height="128"/>
@@ -63,10 +32,10 @@
                                 </connections>
                             </collectionView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hTg-Tp-pKX">
-                                <rect key="frame" x="10" y="667" width="370" height="100"/>
+                                <rect key="frame" x="10" y="730" width="320" height="80"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="Gex-Ft-Oym"/>
+                                    <constraint firstAttribute="height" constant="80" id="jBi-HX-268"/>
                                 </constraints>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor"/>
@@ -74,11 +43,10 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EBC-OW-TvZ">
-                                <rect key="frame" x="10" y="107" width="70" height="550"/>
+                                <rect key="frame" x="10" y="92" width="70" height="628"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="550" id="nqi-Rq-3Qt"/>
-                                    <constraint firstAttribute="width" constant="70" id="stC-G9-GfJ"/>
+                                    <constraint firstAttribute="width" constant="70" id="XHS-Kg-PPW"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gXF-5Y-VWW">
                                     <size key="itemSize" width="53" height="66"/>
@@ -92,26 +60,68 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Q7G-Vi-gYl"/>
                                 </connections>
                             </collectionView>
+                            <datePicker toolTip="開始日" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="J64-7r-XTi">
+                                <rect key="frame" x="10" y="47" width="100" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="Nlg-na-CdU"/>
+                                    <constraint firstAttribute="width" constant="100" id="oQb-wG-OBW"/>
+                                </constraints>
+                                <locale key="locale" localeIdentifier="ja"/>
+                                <connections>
+                                    <action selector="didValueChangedDatePicker:" destination="BYZ-38-t0r" eventType="valueChanged" id="Mka-rf-L5O"/>
+                                </connections>
+                            </datePicker>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="bcY-3t-WNI">
+                                <rect key="frame" x="120" y="47.333333333333329" width="100" height="34.333333333333329"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="rdI-jC-3bJ"/>
+                                </constraints>
+                                <locale key="locale" localeIdentifier="ja"/>
+                                <connections>
+                                    <action selector="didValueChangedDatePicker:" destination="BYZ-38-t0r" eventType="valueChanged" id="NUe-bJ-CeY"/>
+                                </connections>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vNf-TJ-DlG">
+                                <rect key="frame" x="230" y="53.666666666666657" width="19.333333333333343" height="22"/>
+                                <state key="normal" image="arrow.left.and.right.square" catalog="system"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6w9-UI-E62">
+                                <rect key="frame" x="340" y="756.33333333333337" width="40" height="27.333333333333371"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="6w9-UI-E62" secondAttribute="height" multiplier="51:35" id="ClG-KK-AyY"/>
+                                    <constraint firstAttribute="width" constant="40" id="TLp-1F-R9a"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="clipboard" catalog="system"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="v2J-x8-eME" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="7Yj-He-YS3"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="v2J-x8-eME" secondAttribute="trailing" constant="10" id="Aoe-y5-hCm"/>
-                            <constraint firstItem="fwO-PY-Obp" firstAttribute="leading" secondItem="EBC-OW-TvZ" secondAttribute="trailing" constant="5" id="Hlh-2X-UPK"/>
-                            <constraint firstItem="hTg-Tp-pKX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="IXV-zn-Xrl"/>
-                            <constraint firstItem="v2J-x8-eME" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="KgX-kl-zg1"/>
-                            <constraint firstItem="fwO-PY-Obp" firstAttribute="top" secondItem="v2J-x8-eME" secondAttribute="bottom" constant="10" id="Rf1-Da-TFe"/>
-                            <constraint firstItem="fwO-PY-Obp" firstAttribute="height" secondItem="EBC-OW-TvZ" secondAttribute="height" id="Vn5-9M-cqF"/>
-                            <constraint firstItem="EBC-OW-TvZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="bNw-Kg-9dg"/>
-                            <constraint firstItem="hTg-Tp-pKX" firstAttribute="top" secondItem="fwO-PY-Obp" secondAttribute="bottom" constant="10" id="fEH-Sv-Y2v"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hTg-Tp-pKX" secondAttribute="trailing" constant="10" id="hRh-ui-nNe"/>
-                            <constraint firstAttribute="trailing" secondItem="fwO-PY-Obp" secondAttribute="trailing" constant="10" id="oJH-CH-va2"/>
-                            <constraint firstItem="EBC-OW-TvZ" firstAttribute="top" secondItem="v2J-x8-eME" secondAttribute="bottom" constant="10" id="p6p-OD-vx6"/>
+                            <constraint firstItem="J64-7r-XTi" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="2kv-8i-e95"/>
+                            <constraint firstItem="EBC-OW-TvZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="5oH-p7-zLI"/>
+                            <constraint firstItem="vNf-TJ-DlG" firstAttribute="centerY" secondItem="bcY-3t-WNI" secondAttribute="centerY" id="7RQ-DR-ypu"/>
+                            <constraint firstItem="vNf-TJ-DlG" firstAttribute="leading" secondItem="bcY-3t-WNI" secondAttribute="trailing" constant="10" id="CSQ-GV-0Nr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6w9-UI-E62" secondAttribute="trailing" constant="10" id="EiK-vT-mWD"/>
+                            <constraint firstItem="fwO-PY-Obp" firstAttribute="top" secondItem="J64-7r-XTi" secondAttribute="bottom" constant="10" id="G4j-XC-R0T"/>
+                            <constraint firstItem="6w9-UI-E62" firstAttribute="centerY" secondItem="hTg-Tp-pKX" secondAttribute="centerY" id="NPB-md-5u0"/>
+                            <constraint firstItem="EBC-OW-TvZ" firstAttribute="height" secondItem="fwO-PY-Obp" secondAttribute="height" id="QDf-CH-LSS"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="hTg-Tp-pKX" secondAttribute="bottom" id="XcI-N1-L8D"/>
+                            <constraint firstItem="J64-7r-XTi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="YTq-nk-gHH"/>
+                            <constraint firstItem="hTg-Tp-pKX" firstAttribute="top" secondItem="EBC-OW-TvZ" secondAttribute="bottom" constant="10" id="cv3-k5-Fkl"/>
+                            <constraint firstItem="6w9-UI-E62" firstAttribute="leading" secondItem="hTg-Tp-pKX" secondAttribute="trailing" constant="10" id="cyW-gd-0uO"/>
+                            <constraint firstItem="EBC-OW-TvZ" firstAttribute="top" secondItem="J64-7r-XTi" secondAttribute="bottom" constant="10" id="hq7-tv-ewx"/>
+                            <constraint firstItem="hTg-Tp-pKX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="mBI-sW-Ba1"/>
+                            <constraint firstItem="fwO-PY-Obp" firstAttribute="leading" secondItem="EBC-OW-TvZ" secondAttribute="trailing" constant="5" id="rVn-TB-wJP"/>
+                            <constraint firstItem="bcY-3t-WNI" firstAttribute="leading" secondItem="J64-7r-XTi" secondAttribute="trailing" constant="10" id="sEH-Yz-Dlf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fwO-PY-Obp" secondAttribute="trailing" constant="5" id="woC-Oa-kd9"/>
+                            <constraint firstItem="bcY-3t-WNI" firstAttribute="centerY" secondItem="J64-7r-XTi" secondAttribute="centerY" id="zWc-8V-gDl"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="beginDatePicker" destination="J64-7r-XTi" id="C5Z-dI-FyR"/>
                         <outlet property="bodyCollectionView" destination="fwO-PY-Obp" id="vkW-48-bFD"/>
+                        <outlet property="endDatePicker" destination="bcY-3t-WNI" id="grO-bj-Nip"/>
                         <outlet property="intervalMenuButton" destination="vNf-TJ-DlG" id="KKz-FT-ZU1"/>
                         <outlet property="leftCollectionView" destination="EBC-OW-TvZ" id="spJ-vh-rQ3"/>
                         <outlet property="textView" destination="hTg-Tp-pKX" id="toB-W1-bUf"/>
@@ -123,6 +133,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.left.and.right.square" catalog="system" width="128" height="114"/>
+        <image name="clipboard" catalog="system" width="103" height="128"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

@@ -17,6 +17,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     @IBOutlet weak var intervalMenuButton: UIButton!
     
+    @IBOutlet weak var beginDatePicker: UIDatePicker!
+    @IBOutlet weak var endDatePicker: UIDatePicker!
+    
     var timeBegin: Int = 10
     var timeEnd: Int = 18
     var interval: Int = 30
@@ -53,6 +56,37 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         textView.text = ""
         
         self.configureIntervalMenuButton()
+        
+        beginDatePicker.date = Calendar.current.date(byAdding: .day, value: 0, to: dateBegin)!
+        endDatePicker.date = Calendar.current.date(byAdding: .day, value: dates, to: dateBegin)!
+        
+        
+    }
+    
+    func refreshView() {
+        self.bodyCollectionView.reloadData()
+        self.leftCollectionView.reloadData()
+    }
+    
+    @IBAction func didValueChangedDatePicker(_ sender: UIDatePicker) {
+        if endDatePicker.date <= beginDatePicker.date {
+            endDatePicker.date = beginDatePicker.date
+        }
+        
+        // update dateBegin
+        print("beginDate: \(beginDatePicker.date)")
+        dateBegin = beginDatePicker.date
+    
+        // update dates
+        let calender = Calendar(identifier: .gregorian)
+        let beginDate = calender.startOfDay(for: beginDatePicker.date)
+        let endDate = calender.startOfDay(for: endDatePicker.date)
+        print(beginDate, endDate)
+        let calculatedInterval = Calendar(identifier: .gregorian).dateComponents([.day], from: beginDate, to: endDate).day!
+        print("calculatedInterval: \(calculatedInterval)")
+        dates = calculatedInterval + 1
+        
+        self.refreshView()
     }
     
     // Intervalを設定するためのボタンに関する設定
@@ -61,20 +95,17 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         actions.append(UIAction(title: "15min", handler: { _ in
             self.interval = 15
-            self.bodyCollectionView.reloadData()
-            self.leftCollectionView.reloadData()
+            self.refreshView()
         }))
         
         actions.append(UIAction(title: "30min", handler: { _ in
             self.interval = 30
-            self.bodyCollectionView.reloadData()
-            self.leftCollectionView.reloadData()
+            self.refreshView()
         }))
                       
         actions.append(UIAction(title: "60min", handler: { _ in
             self.interval = 60
-            self.bodyCollectionView.reloadData()
-            self.leftCollectionView.reloadData()
+            self.refreshView()
         }))
         
         intervalMenuButton.menu = UIMenu(title: "", options: .displayInline, children: actions)
