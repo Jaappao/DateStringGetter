@@ -8,7 +8,7 @@
 import UIKit
 
 
-class EachCell: UICollectionViewCell {
+class bodyCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var profileImageFrameView: UIView!
 
