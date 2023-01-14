@@ -57,6 +57,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         dateBegin = Date()
         
         textView.text = ""
+        textView.layer.cornerRadius = 10
         
         self.configureIntervalMenuButton()
         
@@ -65,8 +66,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         beginDatePicker.date = Calendar.current.date(byAdding: .day, value: 0, to: dateBegin)!
         endDatePicker.date = Calendar.current.date(byAdding: .day, value: dates, to: dateBegin)!
-        
-        
     }
     
     func refreshView() {
