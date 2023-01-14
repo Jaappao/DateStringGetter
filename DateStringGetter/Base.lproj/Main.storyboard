@@ -16,11 +16,57 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v2J-x8-eME">
+                                <rect key="frame" x="10" y="47" width="370" height="50"/>
+                                <subviews>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" toolTip="開始日" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="J64-7r-XTi">
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="oQb-wG-OBW"/>
+                                        </constraints>
+                                        <locale key="locale" localeIdentifier="ja"/>
+                                    </datePicker>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="bcY-3t-WNI">
+                                        <rect key="frame" x="120" y="0.0" width="120" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="rdI-jC-3bJ"/>
+                                        </constraints>
+                                        <locale key="locale" localeIdentifier="ja"/>
+                                    </datePicker>
+                                    <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vNf-TJ-DlG">
+                                        <rect key="frame" x="240" y="0.0" width="130" height="50"/>
+                                        <state key="normal" title="単位時間"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="J64-7r-XTi" firstAttribute="top" secondItem="v2J-x8-eME" secondAttribute="top" id="Bix-yL-fbr"/>
+                                    <constraint firstItem="bcY-3t-WNI" firstAttribute="top" secondItem="v2J-x8-eME" secondAttribute="top" id="GGI-C1-UsO"/>
+                                    <constraint firstAttribute="height" constant="50" id="gPT-uE-FPV"/>
+                                    <constraint firstItem="J64-7r-XTi" firstAttribute="centerY" secondItem="v2J-x8-eME" secondAttribute="centerY" id="h2Q-e4-p67"/>
+                                    <constraint firstAttribute="bottom" secondItem="bcY-3t-WNI" secondAttribute="bottom" id="kPZ-sf-kFV"/>
+                                    <constraint firstAttribute="bottom" secondItem="J64-7r-XTi" secondAttribute="bottom" id="pLq-4w-o6v"/>
+                                </constraints>
+                            </stackView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fwO-PY-Obp">
+                                <rect key="frame" x="85" y="107" width="295" height="550"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pDu-zg-kyW">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="YLd-66-qGO"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="PNY-Ft-OYZ"/>
+                                </connections>
+                            </collectionView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hTg-Tp-pKX">
-                                <rect key="frame" x="10" y="662" width="370" height="128"/>
+                                <rect key="frame" x="10" y="667" width="370" height="100"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="KPS-gi-l2Q"/>
+                                    <constraint firstAttribute="height" constant="100" id="Gex-Ft-Oym"/>
                                 </constraints>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor"/>
@@ -28,10 +74,11 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EBC-OW-TvZ">
-                                <rect key="frame" x="10" y="47" width="70" height="500"/>
+                                <rect key="frame" x="10" y="107" width="70" height="550"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="9Lq-1h-gke"/>
+                                    <constraint firstAttribute="height" constant="550" id="nqi-Rq-3Qt"/>
+                                    <constraint firstAttribute="width" constant="70" id="stC-G9-GfJ"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gXF-5Y-VWW">
                                     <size key="itemSize" width="53" height="66"/>
@@ -45,42 +92,27 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Q7G-Vi-gYl"/>
                                 </connections>
                             </collectionView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fwO-PY-Obp">
-                                <rect key="frame" x="80" y="47" width="310" height="500"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="500" id="2Sv-lX-IEL"/>
-                                </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pDu-zg-kyW">
-                                    <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells/>
-                                <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="YLd-66-qGO"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="PNY-Ft-OYZ"/>
-                                </connections>
-                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="EBC-OW-TvZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="1Af-4z-o5z"/>
-                            <constraint firstItem="fwO-PY-Obp" firstAttribute="height" secondItem="EBC-OW-TvZ" secondAttribute="height" id="4vM-zv-XhT"/>
-                            <constraint firstItem="fwO-PY-Obp" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="9he-mH-yiv"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hTg-Tp-pKX" secondAttribute="trailing" constant="10" id="I4c-15-3d7"/>
-                            <constraint firstItem="hTg-Tp-pKX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="Mon-Bs-8Mw"/>
-                            <constraint firstAttribute="trailing" secondItem="fwO-PY-Obp" secondAttribute="trailing" id="ObM-VW-CKH"/>
-                            <constraint firstItem="fwO-PY-Obp" firstAttribute="leading" secondItem="EBC-OW-TvZ" secondAttribute="trailing" id="fij-cD-gWD"/>
-                            <constraint firstItem="hTg-Tp-pKX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jbw-EL-VKu"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="hTg-Tp-pKX" secondAttribute="bottom" constant="20" id="reo-cK-DqA"/>
-                            <constraint firstItem="EBC-OW-TvZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="xtv-NX-Mh6"/>
+                            <constraint firstItem="v2J-x8-eME" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="7Yj-He-YS3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="v2J-x8-eME" secondAttribute="trailing" constant="10" id="Aoe-y5-hCm"/>
+                            <constraint firstItem="fwO-PY-Obp" firstAttribute="leading" secondItem="EBC-OW-TvZ" secondAttribute="trailing" constant="5" id="Hlh-2X-UPK"/>
+                            <constraint firstItem="hTg-Tp-pKX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="IXV-zn-Xrl"/>
+                            <constraint firstItem="v2J-x8-eME" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="KgX-kl-zg1"/>
+                            <constraint firstItem="fwO-PY-Obp" firstAttribute="top" secondItem="v2J-x8-eME" secondAttribute="bottom" constant="10" id="Rf1-Da-TFe"/>
+                            <constraint firstItem="fwO-PY-Obp" firstAttribute="height" secondItem="EBC-OW-TvZ" secondAttribute="height" id="Vn5-9M-cqF"/>
+                            <constraint firstItem="EBC-OW-TvZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="bNw-Kg-9dg"/>
+                            <constraint firstItem="hTg-Tp-pKX" firstAttribute="top" secondItem="fwO-PY-Obp" secondAttribute="bottom" constant="10" id="fEH-Sv-Y2v"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hTg-Tp-pKX" secondAttribute="trailing" constant="10" id="hRh-ui-nNe"/>
+                            <constraint firstAttribute="trailing" secondItem="fwO-PY-Obp" secondAttribute="trailing" constant="10" id="oJH-CH-va2"/>
+                            <constraint firstItem="EBC-OW-TvZ" firstAttribute="top" secondItem="v2J-x8-eME" secondAttribute="bottom" constant="10" id="p6p-OD-vx6"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="bodyCollectionView" destination="fwO-PY-Obp" id="vkW-48-bFD"/>
+                        <outlet property="intervalMenuButton" destination="vNf-TJ-DlG" id="KKz-FT-ZU1"/>
                         <outlet property="leftCollectionView" destination="EBC-OW-TvZ" id="spJ-vh-rQ3"/>
                         <outlet property="textView" destination="hTg-Tp-pKX" id="toB-W1-bUf"/>
                     </connections>

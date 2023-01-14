@@ -10,8 +10,12 @@ import UIKit
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet var bodyCollectionView: UICollectionView!
+    
     @IBOutlet var leftCollectionView: UICollectionView!
+    
     @IBOutlet weak var textView: UITextView!
+    
+    @IBOutlet weak var intervalMenuButton: UIButton!
     
     var timeBegin: Int = 10
     var timeEnd: Int = 18
@@ -47,6 +51,34 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         dateBegin = Date()
         
         textView.text = ""
+        
+        self.configureIntervalMenuButton()
+    }
+    
+    // Intervalを設定するためのボタンに関する設定
+    func configureIntervalMenuButton() {
+        var actions = [UIMenuElement]()
+        
+        actions.append(UIAction(title: "15min", handler: { _ in
+            self.interval = 15
+            self.bodyCollectionView.reloadData()
+            self.leftCollectionView.reloadData()
+        }))
+        
+        actions.append(UIAction(title: "30min", handler: { _ in
+            self.interval = 30
+            self.bodyCollectionView.reloadData()
+            self.leftCollectionView.reloadData()
+        }))
+                      
+        actions.append(UIAction(title: "60min", handler: { _ in
+            self.interval = 60
+            self.bodyCollectionView.reloadData()
+            self.leftCollectionView.reloadData()
+        }))
+        
+        intervalMenuButton.menu = UIMenu(title: "", options: .displayInline, children: actions)
+        intervalMenuButton.showsMenuAsPrimaryAction = true
     }
     
     func getTimeDurationOfDay() -> Int {
@@ -258,7 +290,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         if uilabel != nil {
             uilabel?.text = str
             let weekDay = Calendar.current.component(.weekday, from: targetDate)
-            print(weekDay, str)
             uilabel?.textColor = UIColor.darkText
             if weekDay == 7 {
                 // 土曜日
