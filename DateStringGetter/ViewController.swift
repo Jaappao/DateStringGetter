@@ -424,6 +424,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 retVal += "\n"
             }
         }
+        if retVal != "" {
+            retVal.removeLast()
+        }
         return retVal
     }
     
